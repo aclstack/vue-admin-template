@@ -13,7 +13,18 @@ const store = new Vuex.Store({
     settings,
     user
   },
-  getters
+  getters,
+  state: { // 自己定义的数据
+    count: 10
+  },
+  mutations: { // 如果想修改state内的数据必须要借助mutations
+    increment(state) {
+      state.count++
+    },
+    decrease(state) {
+      state.count--
+    }
+  }
 })
 
 export default store
