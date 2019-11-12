@@ -2,7 +2,6 @@
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
     <div class="dashboard-text">count: {{count}}</div>
-
     <el-button type="primary" @click="handleIncrement">+1</el-button>
     <el-button type="danger" @click="handleDecrease">-1</el-button>
 
@@ -24,10 +23,14 @@ export default {
   },
   methods: {
     handleIncrement() {
-      this.$store.commit('increment')
+      this.$store.commit('increment', 100)
     },
     handleDecrease() {
-      this.$store.commit('decrease')
+      // this.$store.commit('decrease')
+      this.$store.commit({
+        type: 'decrease',
+        count: 3
+      })
     }
   }
 }
