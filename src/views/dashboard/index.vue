@@ -4,6 +4,7 @@
     <div class="dashboard-text">count: {{count}}</div>
     <el-button type="primary" @click="handleIncrement">+1</el-button>
     <el-button type="danger" @click="handleDecrease">-1</el-button>
+    <p>{{list}}</p>
 
   </div>
 </template>
@@ -19,14 +20,19 @@ export default {
     ]),
     count() {
       return this.$store.state.count
+    },
+    // eslint-disable-next-line vue/return-in-computed-property
+    list() {
+      // return this.$store.state.list.filter(item => item < 10)
+      return this.$store.getters.filterList
     }
   },
   methods: {
     handleIncrement() {
-      this.$store.commit('increment', 100)
+      // this.$store.commit('increment', 100)
+      this.$store.dispatch('increment')
     },
     handleDecrease() {
-      // this.$store.commit('decrease')
       this.$store.commit({
         type: 'decrease',
         count: 3
